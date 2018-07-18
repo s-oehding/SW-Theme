@@ -1,0 +1,35 @@
+
+
+// Content fullscreen mode
+.content-main.is--fullscreen {
+    .box-shadow(none);
+    max-width: none;
+    padding: 0;
+    .unitize(margin-top,80);
+
+    .content,
+    .content-main--inner {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .content--breadcrumb,
+    .tagcloud--content,
+    .last-seen-products {
+        display: none;
+    }
+
+    .listing--wrapper {
+        .unitize(max-width, 1160);
+        .unitize-padding(20, 10);
+        margin: 0 auto;
+
+        @media screen and(min-width: @tabletViewportWidth) {
+            .unitize-padding(20, 30);
+        }
+
+        @media screen and(min-width: @desktopViewportWidth) {
+            .unitize-padding(20, 0);
+        }
+    }
+}

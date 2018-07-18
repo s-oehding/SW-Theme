@@ -1,0 +1,473 @@
+/*
+Footer
+==========================================
+Defines the styles for the storefront footer and its components.
+
+Contains the footer columns, the navigation elements and the vat notice/logo at the bottom of the page.
+
+It contains the viewport specific styles inside media queries.
+
+The footer element sizes are defined with the unitize mixin.
+*/
+.footer-trust{
+    display: none;
+}
+.footer--columns {
+    .col-3{
+        width: 100%;
+        display: block;
+        float:left;
+    }
+    .col-4{
+        width: 100%;
+        display: block;
+        float:left;
+    }
+}
+.footer-main {
+    background: @gray-dark;
+    hr{
+        display: none;
+    }
+    .container{
+        background: @gray-dark;
+        padding:  0rem 3.125rem;
+    }
+
+    .footer--phone-link {
+        .unitize(font-size, 19);
+        font-weight: bold;
+        color: @brand-primary;
+    }
+
+    .footer--column {
+        .unitize-padding(0, 10);
+        border-top: 1px solid;
+        p{
+            font-weight: 500;
+            color: @white;
+        }
+        &.is--last {
+            border-bottom: none;
+        }
+        &.payment,
+        &.delivery{
+            .navigation--list{
+                .unitize(padding-top, 10);
+                .navigation--entry{
+                    display: inline-block;
+                    .unitize(line-height,25);
+                    vertical-align: middle;
+                    color: @white;
+                    img{
+                        width: auto;
+                        .unitize(height, 25);
+                        .unitize(margin-right, 10);
+                    }
+                    p{
+                        color: @border-color;
+                        .unitize(padding-right, 10);
+                        margin: 0;
+                    }
+                    i{
+                        color: darken(@gray-light, 25%);
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .column--headline {
+        border-bottom: none;
+        .user-select(none);
+        .unitize-padding(8, 0);
+        margin: 0;
+        font-weight: 500;
+        color: @border-color;
+        cursor: pointer;
+        .unitize(font-size, 18);
+        .unitize(line-height, 26);
+        text-transform: uppercase;
+        &.is--active::after {
+            content: '\e68e';
+        }
+
+        &::after {
+            .unitize(4, margin-top);
+            .unitize(18, font-size);
+            font-family: 'shopware';
+            color: @gray-light;
+            font-weight: 700;
+            content: '\e68f';
+            float: right;
+        }
+    }
+
+    .column--content {
+        display: none;
+
+        &.is--active {
+            display: block;
+        }
+    }
+
+    // Second footer with the Shopware logo and vat notice
+    .footer--bottom {
+        .unitize(font-size, 12);
+        .unitize-padding(10, 0, 10, 0);
+        display:none;
+        text-align: left;
+        .footer-bottom-list{
+            list-style-type:none;
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+            li{
+                display: inline-block;
+                color:@border-color;
+                p{
+                    margin: 0;
+                    .unitize(font-size, 12);
+                }
+                &.footer--copyright{
+                    width: auto;
+                }
+                &.footer--vat-info{
+                    width: 50%;
+                    .vat-info--text{
+                        text-align:center;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer--copyright {
+        .unitize(font-size, 13);
+    }
+
+    // Navigation links
+    .navigation--list {
+        .unitize-padding(0, 0, 16, 0);
+
+        .is--level1 {
+            .unitize(padding-bottom, 10);
+
+            .navigation--entry {
+                .unitize(margin-left, 10);
+            }
+        }
+    }
+
+    .navigation--link {
+        .unitize-padding(10, 0, 10, 0, 16);
+        display: block;
+        color: @gray-light;
+        .transition(all, 0.2s, ease-in-out);
+        &:hover {
+            color: @brand-primary;
+        }
+    }
+
+    // Newsletter registration
+    .newsletter--form {
+        .clearfix();
+        .unitize-padding(0, 0, 16, 0, 16);
+    }
+
+    .newsletter--field {
+        border-radius: 1px;
+        background: @gray-light;
+        background-image: none;
+        border: 1px solid @border-color;
+        color: @border-color;
+        position: relative;
+        width: 100%;
+        float: left;
+        .transition(all, 0.2s, ease-in-out);
+        &:focus {
+            background: @gray-light;
+            color: @brand-primary;
+            border: 1px solid @brand-primary;
+            z-index: @zindex-footer-newsletter-field-focus;
+        }
+    }
+
+    .newsletter--button {
+        box-shadow: none;
+        border-radius: 1px;
+        background: transparent;
+        background-image: none;
+        border: 1px solid @border-color;
+        color: @border-color;
+        .unitize-padding(3, 15, 3, 15, 16);
+        .unitize(0, 16, margin-left);
+        .unitize(10, 16, margin-top);
+        .unitize(height, 40);
+        position: relative;
+        width: auto;
+        text-align: center;
+        float: right;
+        width: 100%;
+        .transition(all, 0.2s, ease-in-out);
+        &:hover {
+            border: 1px solid @brand-primary;
+            color: @brand-primary;
+        }
+
+        .button--text {
+            display: block;
+            text-transform: uppercase;
+        }
+    }
+
+    .footer--logo {
+        .unitize(font-size, 28);
+        color: #009fe3;
+        width: auto;
+        padding: 0;
+        .logo--wrapper{
+            float: right;
+            a{
+                color: @border-color;
+                .transition(all, 0.2s, ease-in-out);
+                &:hover{
+                    color: @brand-primary;
+                }
+                font-size: 2.25rem;
+            }
+        }
+    }
+
+    .icon-wrapper{
+        margin: 0;
+    }
+}
+
+.footer-vat {
+    .unitize(margin-top, 10);
+    .unitize-padding(0, 5);
+    background: transparent;
+}
+
+.footer--vat-info {
+    .vat-info--text {
+        .unitize(font-size, 12);
+        .unitize(margin-bottom, 10);
+        text-align: center;
+    }
+}
+
+.footer-minimal {
+    .unitize(font-size, 13);
+    .unitize-padding(40, 10, 20, 10);
+    background: transparent;
+    text-align: center;
+
+    .footer-main & {
+        padding: 0;
+    }
+
+    .footer--service-menu .service--list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        .service--link {
+            .unitize-padding(8, 2);
+            display: inline-block;
+        }
+
+        .service--entry {
+            display: inline-block;
+
+            &:after {
+                .unitize-height(10, 16);
+                .unitize-width(1, 16);
+                .unitize-margin(0, 5);
+                border-left: 1px solid darken(@border-color, 10%);
+                display: inline-block;
+                content: '';
+            }
+
+            &:last-child:after {
+                display: none;
+            }
+        }
+    }
+
+    .footer--vat-info {
+        .unitize-margin(15, 0, 10, 0);
+
+        .vat-info--text {
+            .unitize(line-height, 18);
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (min-width: @tabletViewportWidth) {
+    .footer-main {
+        hr{
+            display: block;
+        }
+        .column--headline {
+            border-bottom: 1px solid @border-color;
+        }
+        .footer-minimal {
+            display: none;
+        }
+        .footer--bottom {
+            display: block;
+        }
+    }
+    .footer--columns {
+        .col-3 {
+            width: 30%;
+        }
+        .col-4 {
+            width: 40%;
+        }
+    }
+}
+
+
+
+@media screen and (min-width: @tabletViewportWidth) {
+    .footer-trust{
+        width: 100%;
+        background: @brand-secondary;
+        padding: 1rem 0;
+        display: block;
+        .container{
+            background: @brand-secondary;
+            padding:  0rem 3.125rem;
+        }
+
+        .trust-footer--list{
+            display: flex;
+            align-items: center;
+            .trust-footer--entry{
+                display: flex;
+                align-items: center;
+                .unitize(padding-right, 10);
+                &.col-30{
+                    width: 30%;
+                }
+                &.col-40{
+                    width: 40%;
+                }
+                color: @border-color;
+                i{
+                    font-size: 2rem;
+                    .unitize(padding-right, 10);
+                    fill: @border-color;
+                }
+                span{
+                    display: inline-block;
+                    float: left;
+                }
+            }
+        }
+    }
+    .footer-main {
+        border-top: none;
+
+        .column--headline {
+            border: none;
+            .unitize-margin(28, 0, 10, 0, 16);
+            padding: 0;
+            cursor: text;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        .footer--column {
+            .unitize-padding(0, 10, 0, 0, 16);
+            border: 0 none;
+            width: 100%;
+            &.is--last {
+                padding-right: 0;
+                border-bottom: 0 none;
+            }
+        }
+
+        .footer--columns {
+            .unitize-padding(0, 30);
+            border-bottom: 1px solid @border-color;
+        }
+
+        .column--content {
+            display: block;
+        }
+
+        // Don't display sub Navigation links on tablet/desktop
+        .navigation--list {
+            .is--level1 {
+                display: none;
+            }
+        }
+
+        .navigation--entry {
+            padding: 0;
+        }
+
+        .navigation--link {
+            line-height: 1.7;
+            padding: 0
+        }
+
+        .newsletter--field {
+            width: 100%;
+            .unitize(margin-bottom, 10);
+        }
+
+        .newsletter--button {
+            width: 100%;
+
+            .icon--mail {
+                .unitize(font-size, 12);
+            }
+        }
+    }
+
+    .footer-vat {
+        padding: 0;
+    }
+
+    .footer--vat-info {
+        .vat-info--text {
+            .unitize(margin-bottom, 20);
+        }
+    }
+}
+
+@media screen and (min-width: @desktopViewportWidth) {
+    .footer-main {
+        .footer--columns {
+            .unitize-padding(0, 0, 20, 0, 16);
+        }
+
+        .footer--bottom {
+            .unitize(font-size, 15);
+        }
+        .newsletter--field {
+            width: 75%;
+        }
+
+        .newsletter--button {
+            width: auto;
+            .unitize(0, 16, margin-top);
+            .icon--mail {
+                .unitize(font-size, 12);
+            }
+        }
+    }
+
+    .footer-minimal {
+        padding-top: 0;
+    }
+}
